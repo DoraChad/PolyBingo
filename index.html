@@ -7,11 +7,7 @@
   </head>
   <body>
     <div class="content">
-      {% if error_message %}
-        <div class="error" style="color: red;">
-          {{ error_message }}
-        </div>
-      {% endif %}
+      <div id="error-message" style="color: red;"></div>
       <form method="post", action="https://dorachadss.pythonanywhere.com/lobby">
         <h3>Enter a Room</h3>
         <div>
@@ -24,5 +20,20 @@
         <button type="submit" name="create">Create Room</button>
       </form>
     </div>
+    <script>
+      // Function to get query parameter by name
+      function getQueryParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Get the 'error' query parameter if it exists
+      const errorMessage = getQueryParameter('error');
+
+      // If there's an error message, display it
+      if (errorMessage) {
+        document.getElementById('error-message').textContent = errorMessage;
+      }
+    </script>
   </body>
 </html>
