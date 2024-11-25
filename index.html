@@ -7,7 +7,17 @@
   </head>
   <body>
     <div class="content">
-      {% block content %} {% endblock %}
+      <form method="post">
+        <h3>Enter a Room</h3>
+        <div>
+          <input type="text" placeholder="Username" name="name"/>
+        </div>
+        <div class="join">
+          <input type="text" placeholder="Room Code" name="code"/>
+          <button type="sumbit" name="join">Join Room</button>
+        </div>
+        <button type="submit" name="create">Create Room</button>
+      </form>
     </div>
   </body>
 </html>
