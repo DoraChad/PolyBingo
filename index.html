@@ -18,16 +18,16 @@
           // Display a specific error message based on the error code
           switch(errorCode) {
             case '1':
-              errorMessage.textContent = 'Please input a username.';
+              errorMessage.textContent = '\n\nPlease input a username.';
               break;
             case '2':
-              errorMessage.textContent = 'Please input a room code.';
+              errorMessage.textContent = '\n\nPlease input a room code.';
               break;
             case '3':
-              errorMessage.textContent = 'Room not found.';
+              errorMessage.textContent = '\n\nRoom not found.';
               break;
             default:
-              errorMessage.textContent = 'Unknown error.';
+              errorMessage.textContent = '\n\nUnknown error.';
           }
           errorMessage.style.display = 'block';  // Show the error message
         } else {
