@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>PolyBingo</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script src="https://cdn.socket.io/5.4.1/socket.io.min.js"></script>
     <script>
       // This function will run when the page loads to fill the form fields
       window.onload = function() {
@@ -30,9 +30,7 @@
         
       </div>
       <script type="text/javascript">
-        const socketio = io("https://dorachadss.pythonanywhere.com/", {
-           transports: ['websocket']
-        });
+        const socketio = io("https://dorachadss.pythonanywhere.com/")
 
         const messages = document.getElementById("teams")
 
