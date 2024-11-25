@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <title>PolyBingo</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script>
+      // This function will run when the page loads to fill the form fields
+      window.onload = function() {
+        // Get the current URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const errorCode = urlParams.get('error');
+
+        const errorMessage = document.getElementById('error-message');
+
+        if (errorCode) {
+          // Display a specific error message based on the error code
+          switch(errorCode) {
+            case '1':
+              errorMessage.textContent = 'Please input a username.';
+              break;
+            case '2':
+              errorMessage.textContent = 'Please input a room code.';
+              break;
+            case '3':
+              errorMessage.textContent = 'Room not found.';
+              break;
+            default:
+              errorMessage.textContent = 'Unknown error.';
+          }
+          errorMessage.style.display = 'block';  // Show the error message
+        } else {
+          errorMessage.style.display = 'none';
+        }
+      };
+    </script>
   </head>
   <body>
+    <div id="error-message" style="display: none; color: red; font-weight: bold; margin-bottom: 10px;">
+        <!-- The error message will be dynamically inserted here -->
+      </div>
     <div class="content">
       <form method="post", action="https://dorachadss.pythonanywhere.com/lobby">
         <h3>Enter a Room</h3>
@@ -14,9 +48,10 @@
         </div>
         <div class="join">
           <input type="text" placeholder="Room Code" name="code"/>
-          <button type="sumbit" name="join">Join Room</button>
+
         </div>
         <button type="submit" name="create">Create Room</button>
+        <button type="sumbit" name="join">Join Room</button>
       </form>
     </div>
   </body>
