@@ -30,7 +30,9 @@
         
       </div>
       <script type="text/javascript">
-        var socketio = io('https://dorachadss.pythonanywhere.com/');
+        const socketio = io("https://dorachadss.pythonanywhere.com/", {
+           transports: ['websocket']
+        });
 
         const messages = document.getElementById("teams")
 
