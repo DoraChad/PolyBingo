@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>PolyBingo</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script>
+      // This function will run when the page loads to fill the form fields
+      window.onload = function() {
+        // Get the current URL
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const room = urlParams.get('room');
+
+        const roomCode = document.getElementById('room-code');
+
+        if (room) {
+          roomCode.style.display = room
+        } else {
+          errorMessage.style.display = 'none';
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <div id="room-code"></div>
+    </div>
+  </body>
+</html>
