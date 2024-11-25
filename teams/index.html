@@ -33,6 +33,15 @@
 
         const messages = document.getElementById("teams")
 
+        socketio.on('connect', function() {
+            console.log('Successfully connected to the server!');
+        });
+        
+        // Also handle the connection error:
+        socketio.on('connect_error', function(error) {
+            console.log('Connection failed:', error);
+        });
+
 
         socketio.on("message", (data) => {
           console.log(data);
