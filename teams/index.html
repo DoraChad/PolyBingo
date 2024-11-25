@@ -33,28 +33,9 @@
 
         const messages = document.getElementById("teams")
 
-        const createMessage = (red, green, blue, yellow) => {
-          const content = `
-          <div class="text">
-            <h3>
-              ${red}
-            </h3>
-            <h3>
-              ${green}
-            </h3>
-            <h3>
-              ${blue}
-            </h3>
-            <h3>
-              ${yellow}
-            </h3>
-          </div>
-          `
-          messages.innerHTML += content;
-        };
 
         socketio.on("message", (data) => {
-          console.log(data.red, data.green, data.blue, data.yellow);
+          console.log(data);
         });
         
       </script>
