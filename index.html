@@ -44,21 +44,21 @@
 
         // Use Fetch API to send form data to the backend
         fetch('https://dorachadss.pythonanywhere.com/lobby', {
-          method: 'POST',
-          body: formData
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',  // Or application/json if needed
+            },
+            body: new URLSearchParams({
+                'name': 'yourName',
+                'code': 'yourRoomCode',
+                'join': true
+            }),
+            mode: 'cors'  // Explicitly set to 'cors' to support cross-origin requests
         })
-        .then(response => response.json()) // Expect JSON response from backend
-        .then(data => {
-          if (data.error) {
-            // Display error message from backend
-            document.getElementById('error-message').textContent = data.error;
-          } else {
-            // Process success message if needed
-            console.log('Success:', data);
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+
         });
       });
     </script>
