@@ -7,8 +7,7 @@
     <script>
       // This function will run when the page loads to fill the form fields
       window.onload = function() {
-        checkSession();
-        // Get the current URL
+
         const urlParams = new URLSearchParams(window.location.search);
         
         const room = urlParams.get('room');
@@ -22,28 +21,6 @@
         }
         
       };
-      function checkSession() {
-            // Replace with your Flask server URL
-            fetch("https://dorachadss.pythonanywhere.com/teams", {
-                method: 'GET',
-                credentials: 'include'  // Ensure the session cookie is sent
-            })
-            .then(response => {
-                if (response.redirected) {
-                    // If the response is a redirect (e.g., error page), handle it
-                    window.location.href = response.url;  // Redirect to the error page
-                } else {
-                    // Session is valid, load the page normally
-                    console.log("Session valid. Proceeding to the page.");
-                    // You can load other content here if needed
-                }
-            })
-            .catch(error => {
-                console.error('Error checking session:', error);
-                // Handle any unexpected errors, e.g., network issues
-                alert("There was an issue checking your session. Please try again.");
-            });
-        }
     </script>
   </head>
   <body>
