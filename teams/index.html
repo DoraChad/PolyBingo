@@ -51,11 +51,11 @@
           </div>
           `
           messages.innerHTML += content;
-        }
+        };
 
         socketio.on("message", (data) => {
-          createMessage(data.red, data.green, data.blue, data.yellow);
-        }
+          console.log(data.red, data.green, data.blue, data.yellow);
+        });
         
       </script>
     </div>
