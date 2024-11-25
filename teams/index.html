@@ -30,6 +30,33 @@
       </div>
       <script type="text/javascript">
         var socketio = io();
+
+        const messages = document.getElementById("messages")
+
+        const createMessage = (red, green, blue, yellow) => {
+          const content = `
+          <div class="text">
+            <h3>
+              ${red}
+            </h3>
+            <h3>
+              ${green}
+            </h3>
+            <h3>
+              ${blue}
+            </h3>
+            <h3>
+              ${yellow}
+            </h3>
+          </div>
+          `
+          messages.innerHTML += content;
+        }
+
+        socketio.on("message", (data) => {
+          createMessage(data.red, data.green, data.blue, data.yellow);
+        }
+        
       </script>
     </div>
   </body>
