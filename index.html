@@ -7,59 +7,17 @@
   </head>
   <body>
     <div class="content">
-      <!-- Error message will be displayed here -->
-      <div id="error-message" style="color: red;"></div>
-
-      <form id="bingo-form">
+      <form method="post", action="https://dorachadss.pythonanywhere.com/lobby">
         <h3>Enter a Room</h3>
         <div>
-          <input type="text" placeholder="Username" name="name" id="name"/>
+          <input type="text" placeholder="Username" name="name"/>
         </div>
         <div class="join">
-          <input type="text" placeholder="Room Code" name="code" id="code"/>
-          
+          <input type="text" placeholder="Room Code" name="code"/>
+          <button type="sumbit" name="join">Join Room</button>
         </div>
         <button type="submit" name="create">Create Room</button>
-        <button type="submit" name="join">Join Room</button>
       </form>
     </div>
-
-    <script>
-      // Function to handle form submission via Fetch API
-      document.getElementById('bingo-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        
-        // Get form values
-        const name = document.getElementById('name').value;
-        const code = document.getElementById('code').value;
-        const create = document.querySelector('button[name="create"]').clicked ? true : false;
-        const join = document.querySelector('button[name="join"]').clicked ? true : false;
-
-        // Prepare the data to send to the backend
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('code', code);
-        formData.append('create', create);
-        formData.append('join', join);
-
-        // Use Fetch API to send form data to the backend
-        fetch('https://dorachadss.pythonanywhere.com/lobby', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',  // Or application/json if needed
-            },
-            body: new URLSearchParams({
-                'name': 'yourName',
-                'code': 'yourRoomCode',
-                'join': true
-            }),
-            mode: 'cors'  // Explicitly set to 'cors' to support cross-origin requests
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
-
-      });
-    </script>
   </body>
 </html>
