@@ -99,7 +99,7 @@
           if (data.players) {
             // Red team
             if (data.players.host) {
-                document.getElementById('host-name').textContent = `Host: ${data.host}`;
+                document.getElementById('host-name').textContent = `Host: ${data.players.host}`;
             }
             
             data.players.red.forEach(player => {
