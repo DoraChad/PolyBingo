@@ -94,12 +94,14 @@
           document.getElementById('bluePlayers').innerHTML = '';
           document.getElementById('yellowPlayers').innerHTML = '';
 
-          if (data.host) {
-              document.getElementById('host-name').textContent = `Host: ${data.host}`;
-          }
+
           
           if (data.players) {
             // Red team
+            if (data.players.host) {
+                document.getElementById('host-name').textContent = `Host: ${data.host}`;
+            }
+            
             data.players.red.forEach(player => {
               const li = document.createElement("li");
               li.textContent = player;
