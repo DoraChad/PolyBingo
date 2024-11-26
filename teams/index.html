@@ -37,7 +37,7 @@
         const room = urlParams.get('room');
         const name = urlParams.get("name");
         
-        const socket = io("http://127.0.0.1:5000", {
+        const socketio = io("http://127.0.0.1:5000", {
             query: { room: room, name: name },
             timeout: 10000  // Increase the timeout duration (in milliseconds)
         });
