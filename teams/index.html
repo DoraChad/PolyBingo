@@ -116,14 +116,19 @@
             // Red team
               if (data.players.host) {
                 document.getElementById('host-name').textContent = `Host: ${data.players.host}`;
+              };
+
+            
               if (data.players.lock) {
                 lockteams = data.players.lock;
+              };
+            
               if (data.players.host === name) {
                   document.getElementById('hostMenu').style.display = 'block';
               } else {
                   document.getElementById('hostMenu').style.display = 'none';
-              }
-            }
+              };
+            
             
             data.players.red.forEach(player => {
               const li = document.createElement("li");
