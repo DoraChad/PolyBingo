@@ -28,24 +28,24 @@
   <body>
     <div class="content">
       <h2 id="room-code"></h2>
-      <div class="teams" style="display: flex; justify-content: space-around; align-items: center; gap: 10px;">
-        <div class="red" style="display: flex; justify-content: center;">
-            <button id="joinRedTeam" style="color: red;">Join Red Team</button>
-            <ul id="redPlayers"></ul>
+      <div class="teams" style="display: flex; justify-content: space-around; align-items: flex-start; gap: 10px;">
+        <div class="team red" style="display: flex; flex-direction: column; align-items: center;">
+          <button id="joinRedTeam" style="color: red;">Join Red Team</button>
+          <ul id="redPlayers" style="list-style-type: none; padding-left: 0;"></ul>
         </div>
-        <div class="green" style="display: flex; justify-content: center;">
-            <button id="joinGreenTeam" style="color: green;">Join Green Team</button>
-            <ul id="greenPlayers"></ul>
+        <div class="team green" style="display: flex; flex-direction: column; align-items: center;">
+          <button id="joinGreenTeam" style="color: green;">Join Green Team</button>
+          <ul id="greenPlayers" style="list-style-type: none; padding-left: 0;"></ul>
         </div>
-        <div class="blue" style="display: flex; justify-content: center;">
-            <button id="joinBlueTeam" style="color: blue;">Join Blue Team</button>
-            <ul id="bluePlayers"></ul>
+        <div class="team blue" style="display: flex; flex-direction: column; align-items: center;">
+          <button id="joinBlueTeam" style="color: blue;">Join Blue Team</button>
+          <ul id="bluePlayers" style="list-style-type: none; padding-left: 0;"></ul>
         </div>
-        <div class="yellow" style="display: flex; justify-content: center;">
-            <button id="joinYellowTeam" style="color: yellow;">Join Yellow Team</button>
-            <ul id="yellowPlayers"></ul>
+        <div class="team yellow" style="display: flex; flex-direction: column; align-items: center;">
+          <button id="joinYellowTeam" style="color: yellow;">Join Yellow Team</button>
+          <ul id="yellowPlayers" style="list-style-type: none; padding-left: 0;"></ul>
         </div>
-    </div>
+      </div>
 
       <script type="text/javascript">
         const urlParams = new URLSearchParams(window.location.search);
