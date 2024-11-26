@@ -46,6 +46,12 @@
           <button id="joinYellowTeam" style="color: yellow;">Join Yellow Team</button>
           <ul id="yellowPlayers" style="list-style-type: none; padding-left: 0;"></ul>
         </div>
+        <div id="hostMenu" style="display:none;">
+            <button id="startGameBtn">Start Game</button>
+            <button id="changeSettingsBtn">Change Settings</button>
+            <!-- Add more controls here as needed -->
+        </div>
+
       </div>
 
       <script type="text/javascript">
@@ -100,6 +106,11 @@
             // Red team
             if (data.players.host) {
                 document.getElementById('host-name').textContent = `Host: ${data.players.host}`;
+              if (data.players.host === name) {
+                  document.getElementById('hostMenu').style.display = 'block';
+              } else {
+                  document.getElementById('hostMenu').style.display = 'none';
+              }
             }
             
             data.players.red.forEach(player => {
