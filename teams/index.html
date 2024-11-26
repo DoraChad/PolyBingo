@@ -59,6 +59,8 @@
       </div>
 
       <script type="text/javascript">
+        const lockteams = False;
+        
         const urlParams = new URLSearchParams(window.location.search);
         
         const room = urlParams.get('room');
@@ -74,13 +76,17 @@
         });
         
         function handleButtonClick(team) {
-          socketio.emit('join_team', {
-            team: team,
-            room: room,  // Include the room ID
-            name: name     // Include the user's name
-          });
-  
-          console.log(`User has joined the ${team} team`);
+          if (!lockteams) {
+            socketio.emit('join_team', {
+              team: team,
+              room: room,  // Include the room ID
+              name: name     // Include the user's name
+            });
+    
+            console.log(`User has joined the ${team} team`);
+            
+          }
+
         }
 
 
@@ -108,8 +114,10 @@
           
           if (data.players) {
             // Red team
-            if (data.players.host) {
+              if (data.players.host) {
                 document.getElementById('host-name').textContent = `Host: ${data.players.host}`;
+              if (data.players.lock) {
+                lockteams = data.players.lock;
               if (data.players.host === name) {
                   document.getElementById('hostMenu').style.display = 'block';
               } else {
