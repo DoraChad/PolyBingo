@@ -31,15 +31,19 @@
       <div class="teams" style="display: flex; justify-content: space-around; align-items: center; gap: 10px;">
         <div class="red" style="display: flex; justify-content: center;">
             <button id="joinRedTeam" style="color: red;">Join Red Team</button>
+            <ul id="redPlayers"></ul>
         </div>
         <div class="green" style="display: flex; justify-content: center;">
             <button id="joinGreenTeam" style="color: green;">Join Green Team</button>
+            <ul id="greenPlayers"></ul>
         </div>
         <div class="blue" style="display: flex; justify-content: center;">
             <button id="joinBlueTeam" style="color: blue;">Join Blue Team</button>
+            <ul id="bluePlayers"></ul>
         </div>
         <div class="yellow" style="display: flex; justify-content: center;">
             <button id="joinYellowTeam" style="color: yellow;">Join Yellow Team</button>
+            <ul id="yellowPlayers"></ul>
         </div>
     </div>
 
@@ -83,6 +87,43 @@
         
         socketio.on("message", (data) => {
           console.log(data);
+
+          document.getElementById('redPlayers').innerHTML = '';
+          document.getElementById('greenPlayers').innerHTML = '';
+          document.getElementById('bluePlayers').innerHTML = '';
+          document.getElementById('yellowPlayers').innerHTML = '';
+
+          if (data.players) {
+            // Red team
+            data.players.red.forEach(player => {
+              const li = document.createElement("li");
+              li.textContent = player;
+              document.getElementById('redPlayers').appendChild(li);
+            });
+
+            // Green team
+            data.players.green.forEach(player => {
+              const li = document.createElement("li");
+              li.textContent = player;
+              document.getElementById('greenPlayers').appendChild(li);
+            });
+
+            // Blue team
+            data.players.blue.forEach(player => {
+              const li = document.createElement("li");
+              li.textContent = player;
+              document.getElementById('bluePlayers').appendChild(li);
+            });
+
+            // Yellow team
+            data.players.yellow.forEach(player => {
+              const li = document.createElement("li");
+              li.textContent = player;
+              document.getElementById('yellowPlayers').appendChild(li);
+            });
+          }
+        });
+
         });
 
         if (joinRedButton) {
