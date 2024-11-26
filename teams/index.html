@@ -48,6 +48,20 @@
         
         const room = urlParams.get('room');
         const name = urlParams.get("name");
+        const joinRedButton = document.getElementById('joinRedTeam');
+        const joinGreenButton = document.getElementById('joinGreenTeam');
+        const joinBlueButton = document.getElementById('joinBlueTeam');
+        const joinYellowButton = document.getElementById('joinYellowTeam');
+
+        function handleButtonClick(team) {
+          socket.emit('join_team', {
+            team: team,
+            room: room,  // Include the room ID
+            name: name     // Include the user's name
+          });
+  
+          console.log(`User has joined the ${team} team`);
+        }
         
         const socketio = io("http://127.0.0.1:5000", {
             query: { room: room, name: name },
@@ -69,6 +83,30 @@
         socketio.on("message", (data) => {
           console.log(data);
         });
+
+        if (joinRedButton) {
+          joinRedButton.addEventListener('click', function() {
+            handleButtonClick('red');
+          });
+        }
+    
+        if (joinGreenButton) {
+          joinGreenButton.addEventListener('click', function() {
+            handleButtonClick('green');
+          });
+        }
+    
+        if (joinBlueButton) {
+          joinBlueButton.addEventListener('click', function() {
+            handleButtonClick('blue');
+          });
+        }
+    
+        if (joinYellowButton) {
+          joinYellowButton.addEventListener('click', function() {
+            handleButtonClick('yellow');
+          });
+        }
         
       </script>
     </div>
