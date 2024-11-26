@@ -11,6 +11,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         
         const room = urlParams.get('room');
+        const name = urlParams.get("name");
+
 
         const roomCode = document.getElementById('room-code');
 
@@ -19,18 +21,14 @@
         } else {
           errorMessage.style.display = 'none';
         }
-        
-      };
-    </script>
-  </head>
-  <body>
-    <div class="content">
-      <h2 id="room-code"></h2>
-      <div class="teams">
-        
-      </div>
-      <script type="text/javascript">
-        const socketio = io("https://dorachadss.pythonanywhere.com/")
+
+
+        const socketio = io("https://dorachadss.pythonanywhere.com/", {
+            query: {
+                room: room,
+                name: name
+            }
+        });
 
         const messages = document.getElementById("teams")
 
@@ -42,7 +40,17 @@
         socketio.on('connect_error', function(error) {
             console.log('Connection failed:', error);
         });
-
+        
+      };
+    </script>
+  </head>
+  <body>
+    <div class="content">
+      <h2 id="room-code"></h2>
+      <div class="teams">
+        
+      </div>
+      <script type="text/javascript">
 
         socketio.on("message", (data) => {
           console.log(data);
