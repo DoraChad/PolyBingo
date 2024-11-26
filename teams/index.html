@@ -60,6 +60,8 @@
 
       <script type="text/javascript">
         let lockteams = false;
+
+        const buttons = [joinRedButton, joinGreenButton, joinBlueButton, joinYellowButton];
         
         const urlParams = new URLSearchParams(window.location.search);
         
@@ -122,18 +124,23 @@
 
               lockteams = data.players.lock;
 
-              if (data.players.lock) {
-                button.style.backgroundColor = '#333';  // Dark background
-                button.style.color = '#aaa';  // Light text color
-                button.style.cursor = 'not-allowed';  // Disable pointer cursor
-                button.disabled = true;
-              } else {
-                button.style.backgroundColor = '';  // Default background
-                button.style.color = '';  // Default text color
-                button.style.cursor = '';  // Default cursor
-                button.disabled = false;
-                
-              };
+
+
+              buttons.forEach(button => {
+                  if (lockteams) {
+                      // Change the button styles when the teams are locked
+                      button.style.backgroundColor = '#333';  // Dark background
+                      button.style.color = '#aaa';  // Light text color
+                      button.style.cursor = 'not-allowed';  // Disable pointer cursor
+                      button.disabled = true;  // Disable the button functionality
+                  } else {
+                      // Revert to the normal button styles when teams are not locked
+                      button.style.backgroundColor = '';  // Default background
+                      button.style.color = '';  // Default text color
+                      button.style.cursor = '';  // Default cursor
+                      button.disabled = false;  // Enable the button functionality
+                  }
+              });
             
               if (data.players.host === name) {
                   document.getElementById('hostMenu').style.display = 'block';
