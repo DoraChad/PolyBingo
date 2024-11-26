@@ -127,6 +127,8 @@
 
 
               buttons.forEach(button => {
+                  const originalColor = button.style.color;
+                
                   if (lockteams) {
                       // Change the button styles when the teams are locked
                       button.style.backgroundColor = '#333';  // Dark background
@@ -136,7 +138,7 @@
                   } else {
                       // Revert to the normal button styles when teams are not locked
                       button.style.backgroundColor = '';  // Default background
-                      button.style.color = '';  // Default text color
+                      button.style.color = originalColor;  // Default text color
                       button.style.cursor = '';  // Default cursor
                       button.disabled = false;  // Enable the button functionality
                   }
