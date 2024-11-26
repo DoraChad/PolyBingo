@@ -119,8 +119,20 @@
               };
 
             
+
+              lockteams = data.players.lock;
+
               if (data.players.lock) {
-                lockteams = data.players.lock;
+                button.style.backgroundColor = '#333';  // Dark background
+                button.style.color = '#aaa';  // Light text color
+                button.style.cursor = 'not-allowed';  // Disable pointer cursor
+                button.disabled = true;
+              } else {
+                button.style.backgroundColor = '';  // Default background
+                button.style.color = '';  // Default text color
+                button.style.cursor = '';  // Default cursor
+                button.disabled = false;
+                
               };
             
               if (data.players.host === name) {
