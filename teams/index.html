@@ -170,6 +170,21 @@
             handleButtonClick('yellow');
           });
         }
+
+        const lockTeamsBtn = document.getElementById("lockTeamsBtn");
+
+        lockTeamsBtn.addEventListener('click', function() {
+            socketio.emit('lock_team', {
+              room: room,
+              name: name
+            });
+            if lockTeamsBtn.textContent === "Lock Teams") {
+              lockTeamsBtn.textContent = "Unlock Teams";
+            } else {
+              lockTeamsBtn.textContent = "Lock Teams";
+            };
+          
+        });
         
       </script>
     </div>
