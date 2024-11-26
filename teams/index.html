@@ -37,12 +37,11 @@
         const room = urlParams.get('room');
         const name = urlParams.get("name");
         
-        const socketio = io("https://dorachadss.pythonanywhere.com/", {
-            query: {
-                room: room,
-                name: name
-            }
+        const socket = io("https://dorachadss.pythonanywhere.com", {
+            query: { room: room, name: name },
+            timeout: 10000  // Increase the timeout duration (in milliseconds)
         });
+
 
         const messages = document.getElementById("teams")
 
