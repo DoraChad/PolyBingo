@@ -137,8 +137,16 @@
                       button.disabled = true;  // Disable the button functionality
                   } else {
                       // Revert to the normal button styles when teams are not locked
-                      button.style.backgroundColor = '';  // Default background
-                      button.style.color = originalColor;  // Default text color
+                      button.style.backgroundColor = '';
+                      if (button === "joinRedTeam") {
+                        button.style.color = "red";
+                      } else if (button === "joinBlueTeam") {
+                        button.style.color = "blue";
+                      } else if (button === "joinGreenTeam") {
+                        button.style.color = "green";
+                      } else {
+                        button.style.color = "yellow";
+                      }
                       button.style.cursor = '';  // Default cursor
                       button.disabled = false;  // Enable the button functionality
                   }
