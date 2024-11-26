@@ -52,9 +52,14 @@
         const joinGreenButton = document.getElementById('joinGreenTeam');
         const joinBlueButton = document.getElementById('joinBlueTeam');
         const joinYellowButton = document.getElementById('joinYellowTeam');
-
+        
+        const socketio = io("http://127.0.0.1:5000", {
+            query: { room: room, name: name },
+            timeout: 10000  // Increase the timeout duration (in milliseconds)
+        });
+        
         function handleButtonClick(team) {
-          socket.emit('join_team', {
+          socketio.emit('join_team', {
             team: team,
             room: room,  // Include the room ID
             name: name     // Include the user's name
@@ -62,11 +67,7 @@
   
           console.log(`User has joined the ${team} team`);
         }
-        
-        const socketio = io("http://127.0.0.1:5000", {
-            query: { room: room, name: name },
-            timeout: 10000  // Increase the timeout duration (in milliseconds)
-        });
+
 
 
         const messages = document.getElementById("teams")
