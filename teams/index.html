@@ -28,9 +28,21 @@
   <body>
     <div class="content">
       <h2 id="room-code"></h2>
-      <div class="teams">
-        
-      </div>
+      <div class="teams" style="display: flex; justify-content: space-around; align-items: center; gap: 10px;">
+        <div class="red" style="display: flex; justify-content: center;">
+            <button id="joinRedTeam" style="color: red;">Join Red Team</button>
+        </div>
+        <div class="green" style="display: flex; justify-content: center;">
+            <button id="joinGreenTeam" style="color: green;">Join Green Team</button>
+        </div>
+        <div class="blue" style="display: flex; justify-content: center;">
+            <button id="joinBlueTeam" style="color: blue;">Join Blue Team</button>
+        </div>
+        <div class="yellow" style="display: flex; justify-content: center;">
+            <button id="joinYellowTeam" style="color: yellow;">Join Yellow Team</button>
+        </div>
+    </div>
+
       <script type="text/javascript">
         const urlParams = new URLSearchParams(window.location.search);
         
