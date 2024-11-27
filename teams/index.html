@@ -71,6 +71,8 @@
         const joinGreenButton = document.getElementById('joinGreenTeam');
         const joinBlueButton = document.getElementById('joinBlueTeam');
         const joinYellowButton = document.getElementById('joinYellowTeam');
+
+        const startbtn = document.getElementById('startGameBtn');
         
         const socketio = io("http://127.0.0.1:5000", {
             query: { room: room, name: name },
@@ -187,6 +189,16 @@
             });
           }
 
+        });
+        socketio.on("message", (data) => {
+          console.log(data);
+        });
+
+        startbtn.addEventListener('click', function() {
+          socketio.emit('start_game', {
+              room: room,  // Include the room ID
+              name: name     // Include the user's name
+            });
         });
 
         if (joinRedButton) {
