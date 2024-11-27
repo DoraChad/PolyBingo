@@ -61,7 +61,13 @@
       <script type="text/javascript">
         let lockteams = false;
 
-        const buttons = [joinRedTeam, joinBlueTeam, joinGreenTeam, joinYellowTeam];
+        const buttons = [
+          document.getElementById('joinRedTeam'),
+          document.getElementById('joinBlueTeam'),
+          document.getElementById('joinGreenTeam'),
+          document.getElementById('joinYellowTeam')
+        ];
+
         
         const urlParams = new URLSearchParams(window.location.search);
         
@@ -108,6 +114,7 @@
         
         socketio.on("message", (data) => {
           console.log(data);
+          lockteams = data.players.lock;
 
           document.getElementById('redPlayers').innerHTML = '';
           document.getElementById('greenPlayers').innerHTML = '';
@@ -121,12 +128,6 @@
               if (data.players.host) {
                 document.getElementById('host-name').textContent = `Host: ${data.players.host}`;
               };
-
-            
-
-              lockteams = data.players.lock;
-
-
 
               buttons.forEach(button => {
                   const originalColor = button.style.color;
@@ -190,16 +191,16 @@
           }
 
         });
-        socketio.on("countdown", (data) => {
-          console.log(data);
-        });
+        //socketio.on("countdown", (data) => {
+        //  console.log(data);
+        //});
 
-        startbtn.addEventListener('click', function() {
-          socketio.emit('start_game', {
-              room: room,  // Include the room ID
-              name: name     // Include the user's name
-            });
-        });
+        //startbtn.addEventListener('click', function() {
+        //  socketio.emit('start_game', {
+        //      room: room,  // Include the room ID
+        //      name: name     // Include the user's name
+        //    });
+        //});
 
         if (joinRedButton) {
           joinRedButton.addEventListener('click', function() {
