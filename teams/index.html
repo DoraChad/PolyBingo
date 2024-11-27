@@ -191,16 +191,16 @@
           }
 
         });
-        //socketio.on("countdown", (data) => {
-        //  console.log(data);
-        //});
+        socketio.on("countdown", (data) => {
+          console.log(data);
+        });
 
-        //startbtn.addEventListener('click', function() {
-        //  socketio.emit('start_game', {
-        //      room: room,  // Include the room ID
-        //      name: name     // Include the user's name
-        //    });
-        //});
+        startbtn.addEventListener('click', function() {
+          socketio.emit('start_game', {
+              room: room,  // Include the room ID
+              name: name     // Include the user's name
+            });
+        });
 
         if (joinRedButton) {
           joinRedButton.addEventListener('click', function() {
