@@ -80,7 +80,7 @@
 
         const startbtn = document.getElementById('startGameBtn');
         
-        const socketio = io("http://127.0.0.1:5000/teamsocket", {
+        const socketio = io("http://127.0.0.1:5000", {
             query: { room: room, name: name, ct: "T" },
             timeout: 10000  // Increase the timeout duration (in milliseconds)
         });
