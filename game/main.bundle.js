@@ -7,6 +7,16 @@ const socketio = io("http://127.0.0.1:5000", {
     timeout: 10000  // Increase the timeout duration (in milliseconds)
 });
 
+socketio.on('connect', function() {
+  console.log('Successfully connected to the server!');
+});
+
+// Also handle the connection error:
+socketio.on('connect_error', function(error) {
+  console.log('Connection failed:', error);
+});
+
+
 (() => {
   var e = {
       811: (e, t, n) => {
