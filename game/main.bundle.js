@@ -16,6 +16,49 @@ socketio.on('connect_error', function(error) {
   console.log('Connection failed:', error);
 });
 
+const createBingoBoard = () => {
+  // Create a container div
+  const boardContainer = document.createElement('div');
+  boardContainer.style.position = 'absolute';
+  boardContainer.style.top = '10px';
+  boardContainer.style.right = '10px';
+  boardContainer.style.width = '200px';  // Adjust the width as needed
+  boardContainer.style.height = '200px'; // Adjust the height as needed
+  boardContainer.style.display = 'grid';
+  boardContainer.style.gridTemplateColumns = 'repeat(5, 1fr)';
+  boardContainer.style.gridTemplateRows = 'repeat(5, 1fr)';
+  boardContainer.style.gap = '2px'; // Space between the buttons
+  boardContainer.style.zIndex = '100'; // Ensure it's on top
+  
+  // Loop through to create the 25 buttons (5x5 grid)
+  for (let i = 0; i < 25; i++) {
+    const button = document.createElement('button');
+    button.style.width = '100%';  // Make buttons take full width of grid cell
+    button.style.height = '100%'; // Make buttons take full height of grid cell
+    button.style.border = '1px solid #ccc';
+    button.style.fontSize = '16px';
+    button.style.cursor = 'pointer';
+    button.style.backgroundColor = '#fff';  // Default background color
+    button.innerText = i + 1;  // Set the button text to 1-25
+
+    // Add event listener to change the background color on click
+    button.addEventListener('click', () => {
+      if (button.style.backgroundColor === 'rgb(255, 0, 0)') {
+        button.style.backgroundColor = '#fff';  // Reset to white
+      } else {
+        button.style.backgroundColor = 'red';  // Change to red when clicked
+      }
+    });
+
+    // Append the button to the board container
+    boardContainer.appendChild(button);
+  }
+
+  // Append the board container to the body
+  document.body.appendChild(boardContainer);
+};
+
+createBingoBoard();
 
 (() => {
   var e = {
