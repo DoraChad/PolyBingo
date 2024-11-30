@@ -54,11 +54,13 @@ const createBingoBoard = () => {
   document.body.appendChild(boardContainer);
 };
 
-createBingoBoard();
-
 socketio.on("setup", (data) => {
   console.log(data.data);
   bingotracks = data.data
+
+  console.log(./bingotracks/1)
+
+  createBingoBoard();
 });
 
 
