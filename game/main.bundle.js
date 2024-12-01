@@ -2,7 +2,6 @@ const urlParams = new URLSearchParams(window.location.search);
 const bingoname = urlParams.get('name');
 const bingoroom = urlParams.get('room');
 let bingotracks = []
-let lines = []
 
 const socketio = io("http://127.0.0.1:5000", {
     query: { room: bingoroom, name: bingoname, ct: "G" },
@@ -70,16 +69,18 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
     // Split the text into lines and store them in the 'lines' array
     lines = data.split('\n');
     console.log('File loaded successfully. Number of lines:', lines.length);
+
+    for (let i = 0; i < 25; i++) {
+      console.log(i)
+      console.log(bingotracks)
+      console.log(lines[bingotracks[i-1]])
+    }
   })
   .catch(error => {
     console.error('There was an error loading the file:', error);
   });
 
-  for (let i = 0; i < 25; i++) {
-    bingotracks[i-1] = lines[bingotracks[i-1]]
-    console.log(lines[bingotracks[i-1]])
 
-  }
 
   createBingoBoard();
 });
