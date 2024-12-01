@@ -76,8 +76,8 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
   });
 
   for (let i = 0; i < 25; i++) {
-    bingotracks[i] = lines[bingotracks[i]]
-    console.log(lines[bingotracks[i]])
+    bingotracks[i-1] = lines[bingotracks[i-1]]
+    console.log(lines[bingotracks[i-1]])
 
   }
 
