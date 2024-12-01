@@ -2,6 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const bingoname = urlParams.get('name');
 const bingoroom = urlParams.get('room');
 let bingotracks = []
+let lines = []
 
 const socketio = io("http://127.0.0.1:5000", {
     query: { room: bingoroom, name: bingoname, ct: "G" },
