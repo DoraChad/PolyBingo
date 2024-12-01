@@ -58,7 +58,27 @@ socketio.on("setup", (data) => {
   console.log(data.data);
   bingotracks = data.data
 
-  console.log(./bingotracks/1)
+fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game/bingotracks/generate`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.text();
+  })
+  .then(data => {
+    // Split the text into lines and store them in the 'lines' array
+    lines = data.split('\n');
+    console.log('File loaded successfully. Number of lines:', lines.length);
+  })
+  .catch(error => {
+    console.error('There was an error loading the file:', error);
+  });
+
+  for (let i = 0; i < 25; i++) {
+    bingotracks[i] = lines[bingotracks[i]]
+    console.log(lines[bingotracks[i]])
+
+  }
 
   createBingoBoard();
 });
