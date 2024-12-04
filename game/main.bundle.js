@@ -3,7 +3,7 @@ const bingoname = urlParams.get('name');
 const bingoroom = urlParams.get('room');
 let bingotracks = []
 
-let bingocolor = = {
+let bingocolor = {
   primary: {
     isColor: true,
     r: 0.39215686274509803,
