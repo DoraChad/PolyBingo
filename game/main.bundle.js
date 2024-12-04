@@ -44941,8 +44941,8 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
             MR(this, bR, "f").saveUserProfile(
               t,
               n.token,
-              n.nickname,
-              n.carColors
+              bingoname,
+              bingocolor
             );
         }
         setCarColors(e, t = MR(this, xR, "f")) {
@@ -44967,8 +44967,8 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
           return e == MR(this, xR, "f")
             ? {
                 token: MR(this, _R, "f").token,
-                nickname: MR(this, _R, "f").nickname,
-                carColors: MR(this, _R, "f").carColors,
+                nickname: bingoname,
+                carColors: bingocolor,
               }
             : null !== (t = MR(this, bR, "f").loadUserProfile(e)) &&
               void 0 !== t
@@ -45022,13 +45022,13 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
         getCarColors(e = MR(this, xR, "f")) {
           var t, n;
           return e == MR(this, xR, "f")
-            ? MR(this, _R, "f").carColors
+            ? bingocolor
             : null !==
                 (n =
                   null === (t = MR(this, bR, "f").loadUserProfile(e)) ||
                   void 0 === t
                     ? void 0
-                    : t.carColors) && void 0 !== n
+                    : bingocolor) && void 0 !== n
             ? n
             : wu.random();
         }
@@ -45044,7 +45044,7 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
                   n.token == t.token &&
                   n.nickname == t.nickname &&
                   n.carColors.serialize() == t.carColors.serialize() &&
-                  (this.setNickname(bingoname), this.setCarColors(e.carColors));
+                  (this.setNickname(bingoname), this.setCarColors(bingocolor));
               })
               .catch((e) => {
                 console.error(e);
@@ -45118,6 +45118,7 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
       class KR {
         constructor() {
           CR.add(this);
+          window.krclass = this;
         }
         migrate(e) {
           YR(PR, PR, "f", RR) ||
