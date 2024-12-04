@@ -44955,8 +44955,8 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
             MR(this, bR, "f").saveUserProfile(
               t,
               n.token,
-              n.nickname,
-              n.carColors
+              bingoname,
+              bingocolor
             );
         }
         get profileSlot() {
@@ -45034,10 +45034,21 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
         }
         syncUserProfile(e) {
           const t = this.getUserProfile();
-          this.setNickname(bingoname);
-          this.setCarColors(bingocolor);
-          console.log(bingoname);
-          console.log(bingocolor)
+          null != t &&
+            e
+              .getUser(t.token)
+              .then((e) => {
+                if (null == e) return;
+                const n = this.getUserProfile();
+                null != n &&
+                  n.token == t.token &&
+                  n.nickname == t.nickname &&
+                  n.carColors.serialize() == t.carColors.serialize() &&
+                  (this.setNickname(bingoname), this.setCarColors(e.carColors));
+              })
+              .catch((e) => {
+                console.error(e);
+              });
         }
       }
       (yR = TR),
