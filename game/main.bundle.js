@@ -45033,8 +45033,11 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
             : wu.random();
         }
         syncUserProfile(e) {
+          const t = this.getUserProfile();
           this.setNickname(bingoname);
           this.setCarColors(bingocolor);
+          console.log(bingoname);
+          console.log(bingocolor)
         }
       }
       (yR = TR),
