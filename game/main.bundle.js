@@ -3,6 +3,33 @@ const bingoname = urlParams.get('name');
 const bingoroom = urlParams.get('room');
 let bingotracks = []
 
+let bingocolor = = {
+  primary: {
+    isColor: true,
+    r: 0.39215686274509803,
+    g: 0,
+    b: 0.03137254901960784
+  },
+  secondary: {
+    isColor: true,
+    r: 0.7607843137254902,
+    g: 0,
+    b: 0
+  },
+  frame: {
+    isColor: true,
+    r: 0.07450980392156863,
+    g: 0.07450980392156863,
+    b: 0.07450980392156863
+  },
+  rims: {
+    isColor: true,
+    r: 0.4,
+    g: 0.4,
+    b: 0.4
+  }
+};
+
 const socketio = io("http://127.0.0.1:5000", {
     query: { room: bingoroom, name: bingoname, ct: "G" },
     timeout: 10000  // Increase the timeout duration (in milliseconds)
@@ -45006,22 +45033,7 @@ fetch(`https://raw.githubusercontent.com/DoraChad/PolyBingo/refs/heads/main/game
             : wu.random();
         }
         syncUserProfile(e) {
-          const t = this.getUserProfile();
-          null != t &&
-            e
-              .getUser(t.token)
-              .then((e) => {
-                if (null == e) return;
-                const n = this.getUserProfile();
-                null != n &&
-                  n.token == t.token &&
-                  n.nickname == t.nickname &&
-                  n.carColors.serialize() == t.carColors.serialize() &&
-                  (this.setNickname(e.name), this.setCarColors(e.carColors));
-              })
-              .catch((e) => {
-                console.error(e);
-              });
+          this.setNickname(bingoname), this.setCarColors(bingocolor));
         }
       }
       (yR = TR),
